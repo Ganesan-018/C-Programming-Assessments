@@ -1,11 +1,11 @@
 #include<stdio.h>
-void disp_2digit_even_sum6(int,int);
+void disp_2digit_ones5(int,int);
 int main()
 {
-    disp_2digit_even_sum6(10,99);
+    disp_2digit_ones5(10,99);
     return 0;
 }
-void disp_2digit_even_sum6(int i,int n)
+void disp_2digit_ones5(int i,int n)
 {
     int sum=0;
     while(i<n)
