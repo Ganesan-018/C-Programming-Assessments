@@ -3,20 +3,23 @@
 void getnumbers(char*,char*);
 void addnumbers(char*,char*,char*);
 void print(char*);
-int main() {
+int main() 
+{
     char number1[51], number2[51], result[52];
     getnumbers(number1, number2);
     addnumbers(number1, number2, result);
     print(result);
     return 0;
 }
-void getnumbers(char *n1, char *n2) {
+void getnumbers(char *n1, char *n2) 
+{
     printf("Enter number 1 up to 50 digits : ");
     scanf("%s",n1);
     printf("Enter number 2 up to 50 digits : ");
     scanf("%s",n2);
 }
-void addnumbers(char *n1,char *n2,char *result) {
+void addnumbers(char *n1,char *n2,char *result) 
+{
     int i=strlen(n1)-1;
     int j=strlen(n2)-1;
     int k=50;  
