@@ -1,5 +1,4 @@
 #include<stdio.h>
-void increment(int*,int);
 int main()
 {
     char str[50],ch;
