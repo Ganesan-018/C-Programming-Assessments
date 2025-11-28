@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main() 
 {
-    char board[8][8]={'.'};  
+    char board[8][8]={'*'};  
     int row=0,col=0;
     int i,safe;
     while(row<8) 
