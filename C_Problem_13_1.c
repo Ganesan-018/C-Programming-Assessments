@@ -1,32 +1,63 @@
 #include<stdio.h>
-struct student
-{
+#include<stdlib.h>
+struct student {
     int id;
-    int maths;
-    int science;
+    int Maths;
+    int Science;
+    struct student *next;
 };
-int main()
+struct student *head=NULL;
+struct student* createNode(int id,int m,int s) 
 {
-    struct student s[100];
-    int i=0;
-    while(1)
+    struct student *newNode=(struct student*)malloc(sizeof(struct student));
+    newNode->id=id;
+    newNode->Maths=m;
+    newNode->Science=s;
+    newNode->next=NULL;
+    return newNode;
+}
+void insertEnd(int id,int m,int s) 
+{
+    struct student *newNode=createNode(id, m, s);
+    if(head==NULL) 
     {
-        printf("Enter a student id : ");
-        scanf("%d",&s[i].id);
-        if(s[i].id==-1)
+        head=newNode;
+        return;
+    }
+    struct student *temp=head;
+    while (temp->next!=NULL)
+        temp=temp->next;
+        temp->next=newNode;
+}
+void displayList() 
+{
+    struct student *temp=head;
+    if(temp==NULL) 
+    {
+        printf("\nList is empty!\n");
+        return;
+    }
+    printf("\n Student List \n");
+    while(temp!=NULL) 
+    {
+        printf("ID: %d Maths: %d Science: %d\n",
+               temp->id,temp->Maths,temp->Science);
+        temp=temp->next;
+    }
+}
+int main() 
+{
+    int id,m,s;
+    while(1) 
+    {
+        printf("Enter ID (-1 to stop): ");
+        scanf("%d", &id);
+        if(id==-1)
             break;
-        printf("Enter a maths mark : ");
-        scanf("%d",&s[i].maths);
-        printf("Enter a science mark : ");
-        scanf("%d",&s[i].science);
-        i++;
+        printf("Enter Maths and Science marks: ");
+        scanf("%d %d",&m,&s);
+        insertEnd(id,m,s);
     }
-    for(int j=0;j<i;j++)
-    {
-        printf("Student %d \n",j+1);
-        printf("Id : %d\n",s[j].id);
-        printf("Maths Mark : %d\n",s[j].maths);
-        printf("Science Mark : %d\n",s[j].science);
-    }
+    displayList();
     return 0;
 }
