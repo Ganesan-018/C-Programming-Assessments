@@ -1,50 +1,51 @@
 #include <stdio.h>
-int main() {
-    char board[8][8] = {'.'};  
-    int row = 0, col = 0;
-    int i, safe;
-    while (row < 8) 
+int main() 
+{
+    char board[8][8]={'.'};  
+    int row=0,col=0;
+    int i,safe;
+    while(row<8) 
     {
-        while (col < 8) 
+        while(col<8) 
         {
-            safe = 1;
-            for (i = 0; i < row; i++) 
+            safe=1;
+            for(i=0;i<row;i++) 
             {
-                if (board[i][col] == 'Q')
-                    safe = 0;
-                if (col - (row - i) >= 0 && board[i][col - (row - i)] == 'Q')
-                    safe = 0;
-                if (col + (row - i) < 8 && board[i][col + (row - i)] == 'Q')
-                    safe = 0;
+                if(board[i][col]=='Q')
+                    safe=0;
+                if(col-(row-i)>=0 && board[i][col-(row - i)]=='Q')
+                    safe=0;
+                if(col+(row-i)<8 && board[i][col+(row-i)]=='Q')
+                    safe=0;
             }
-            if (safe) 
+            if(safe) 
             {
-                board[row][col] = 'Q';
+                board[row][col]='Q';
                 break;
             }
             col++;
         }
-        if (col == 8) 
+        if(col==8) 
         {
             row--;
-            for (i = 0; i < 8; i++)
-                if (board[row][i] == 'Q') 
+            for(i=0;i<8;i++)
+                if(board[row][i]=='Q') 
                 { 
-                    board[row][i] = 0;
-                    col = i + 1;
+                    board[row][i]=0;
+                    col=i+1;
                     break;
                 }
         } 
         else 
         {
             row++;
-            col = 0;
+            col=0;
         }
     }
-    for (row = 0; row < 8; row++) 
+    for(row=0;row<8;row++) 
     {
-        for (col = 0; col < 8; col++)
-            printf("%c ", board[row][col]);
+        for(col=0;col<8;col++)
+            printf("%c ",board[row][col]);
         printf("\n");
     }
 }
